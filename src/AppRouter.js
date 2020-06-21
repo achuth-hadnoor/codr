@@ -15,54 +15,10 @@ import Folders from './pages/folders'
 import { getAllData } from "./api";
 import Provider from "./contexts/provider";
 
-class AppRouter extends Component {
-  constructor(props) {
-    super(props);
-    this.handleKeypress = this.handleKeypress.bind(this);
-  }
+class AppRouter extends Component { 
   componentDidMount() {
-    getAllData(this.props.dispatch);
-    document.addEventListener("keydown", this.handleKeypress, true);
-  }
-  componentWillUnmount() {
-    document.removeEventListener("keydown", this.handleKeypress, true);
-  }
-
-  handleKeypress(event) {
-    if (event.keyCode === 27) {
-      return this.props.history.push({
-        pathname: "/home",
-        query: { tab: "Today" }
-      });
-    }
-    if (
-      (event.ctrlKey || event.metaKey || event.altKey) &&
-      event.keyCode === 78
-    ) {
-      return this.props.history.push("/snip");
-    }
-
-    if ((event.ctrlKey || event.metaKey) && event.keyCode === 49) {
-      return this.props.history.push({
-        pathname: "/home",
-        query: { tab: "Today" }
-      });
-    }
-
-    if ((event.ctrlKey || event.metaKey) && event.keyCode === 50) {
-      return this.props.history.push({
-        pathname: "/home",
-        query: { tab: "Backlog" }
-      });
-    }
-
-    if ((event.ctrlKey || event.metaKey) && event.keyCode === 51) {
-      return this.props.history.push({
-        pathname: "/home",
-        query: { tab: "Done" }
-      });
-    }
-  }
+    getAllData(this.props.dispatch); 
+  } 
   render() {
     return (
       <Provider>
@@ -74,16 +30,6 @@ class AppRouter extends Component {
             <AuthedRoute component={Folders} path="/folders"/>
             <UnauthedRoute component={Login} exact path="/login" />
             <UnauthedRoute component={Signup} exact path="/regester" />
-            {/* <UnauthedRoute
-              component={ForgotPassword}
-              exact
-              path="/forgot-password"
-            />
-            <UnauthedRoute
-              component={ResetPassword}
-              exact
-              path="/reset-password"
-            /> */}
             <Route component={NotFound} />
           </Switch>
         </Router>
