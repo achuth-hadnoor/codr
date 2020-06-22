@@ -4,36 +4,35 @@ import { connect } from "react-redux";
 import { Router, Switch, Route } from "react-router-dom";
 
 import AuthedRoute from "./AuthedRoute";
-import UnauthedRoute from "./UnauthedRoute";
-import Home from "./pages/Home";
-import Snip from "./pages/Snip";
-import NotFound from "./pages/404View";
-import Login from "./pages/Login";
-import New from "./pages/New";
-import Signup from "./pages/SignUp";
-import Folders from './pages/folders'
-import { getAllData } from "./api";
-import Provider from "./contexts/provider";
+import UnauthedRoute from "./UnauthedRoute"; 
 
+import { getAllData } from "./api"; 
+
+import onboard from './pages/onboard'
+import Login from './pages/Login'
+import Home from './pages'
+import workspaces from "./pages/workspaces"; 
+import NotFound from './pages/404'
+import settings  from "./pages/settings";
 class AppRouter extends Component { 
   componentDidMount() {
     getAllData(this.props.dispatch); 
   } 
   render() {
-    return (
-      <Provider>
+    return ( 
         <Router history={this.props.history}>
           <Switch>
-            <AuthedRoute component={Home} exact path="/" />
-            <AuthedRoute component={New} path="/new" />
-            <AuthedRoute component={Snip} path="/snip/:id" />
-            <AuthedRoute component={Folders} path="/folders"/>
-            <UnauthedRoute component={Login} exact path="/login" />
-            <UnauthedRoute component={Signup} exact path="/regester" />
+            <AuthedRoute component={Home} exact  path = "/" />     
+            <UnauthedRoute component={onboard} exact path="/onboarding" />
+            <UnauthedRoute component={Login} exact path="/login" /> 
+            <AuthedRoute component={settings} exact path="/settings" />   
+             
+            <AuthedRoute component={workspaces}  path="/w/:wid" />          
+            <AuthedRoute component={workspaces} exact path="/w" />     
+            
             <Route component={NotFound} />
           </Switch>
-        </Router>
-      </Provider>
+        </Router> 
     );
   }
 }

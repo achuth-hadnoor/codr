@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-
-export class Login extends Component {
+import { connect } from 'react-redux'  
+export class Home extends Component {
     render() {
         return (
             <div>
-                Login
+                home
             </div>
         )
     }
@@ -19,4 +18,4 @@ const mapDispatchToProps = {
     
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
