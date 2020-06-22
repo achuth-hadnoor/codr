@@ -35,9 +35,7 @@ const mapStateToProps = (state) => {
 })}
 
 export default connect(mapStateToProps)(create)
-
-const 
-
+ 
 const Wrapper = styled.div`
 
 `
