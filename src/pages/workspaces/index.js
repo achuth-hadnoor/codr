@@ -1,19 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux' 
 import { Switch, Route } from 'react-router-dom'
-
-import styled from 'styled-components'
-import Icon from 'react-icons-kit'
-import arrayMove from 'array-move'; 
-import { grid, settings } from 'react-icons-kit/feather'
-import SortableComponent from './../../components/sortable/sortable-component';
  
- 
+import arrayMove from 'array-move';  
 import  view from './view' 
 import create  from './create'
-
+import Sidebar from './components/sidebar'
+import styled from 'styled-components';
+import Icon from 'react-icons-kit'
+import { chevronLeft,chevronRight } from 'react-icons-kit/feather';
+import { bell } from 'react-icons-kit/feather';
 // list of worspaces and global search on the Top
-
 class Workspaces extends React.Component { 
     onSortEnd = ({ oldIndex, newIndex }) => {
         let { workspaces} = this.props;
@@ -23,68 +20,52 @@ class Workspaces extends React.Component {
             workspaces:workspaces
         })
     };
-
+    shouldCancelStart = (e)=>{
+        // Cancel sorting if the event target is an anchor tag (`a`)
+        if (e.target.tagName.toLowerCase() === 'a') {
+            return true; // Return true to cancel sorting
+        }
+    }
     render() {
         return (
-            <Container>
-                <div className="sidebar">
-                    <Icon icon={grid} className="options" />
-                    <SortableComponent workspaces={this.props.workspaces} onSortEnd={this.onSortEnd} />
-                    <div className="options">
-                        <Icon icon={settings} className="settings" />
-                        <span className="avatar"></span>
+            <Wrapper>
+                <Sidebar user={this.props.user} workspaces={this.props.workspaces} onSortEnd={this.onSortEnd} shouldCancelStart={this.shouldCancelStart}/>      
+                   <Container>
+                    <div  style={{display:'flex',padding:'0px 10px'}}>
+                        <Icon icon={chevronLeft} style={{padding:10}} onClick={()=>{this.props.history.go(-1)}}/>
+                        <Icon icon={chevronRight} style={{padding:10}} onClick={()=>{this.props.history.go(+1)}}/>
+                        <div style={{flex:1}}/>
+                        <Icon icon={bell} style={{padding:10}}/>
                     </div>
-                </div>                 
-            <Switch> 
-                <Route component={view} path="/w/:wid" /> 
-                <Route component={create} path="/w/" /> 
-            </Switch>
-            </Container>
+                    <Switch> 
+                        <Route component={view} path="/w/:wid" /> 
+                        <Route component={create} path="/w/" /> 
+                    </Switch>         
+                   </Container>
+            </Wrapper>
         )
     }
 } 
 
 const mapStateToProps = (state) => { 
     return({
-        workspaces:state.workspaces
+        workspaces:state.workspaces,
+        user:state.user
     })
 }
  
-
-export default connect(mapStateToProps)(Workspaces)
-
+const Wrapper = styled.div`
+    display:flex;
+    flex:1;
+    height:100%;
+` 
 
 const Container = styled.div`
-display:flex;
-height:100%;
-width:100%;
-position:absolute;
-left:0;
-top:0;
-background:#fff;
-color:#121212; 
-.options{
-    padding:10px;
-}
-
-.sidebar{
     display:flex;
     flex-direction:column;
-    }
-    .options{
-        display:flex;
-        flex-direction:column;
-        .avatar{
-            height:32px;
-            width:32px;
-            background:#eee;
-            border-radius:25px;
-            margin:5px 0px;
-        }
-        .settings{
-            padding:10px;
-        }
-    }
-}
+    flex:1;
+    height:100%;
+` 
 
-`;
+export default connect(mapStateToProps)(Workspaces)
+ 

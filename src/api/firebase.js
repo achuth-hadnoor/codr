@@ -18,8 +18,8 @@ class Firebase {
             
             var provider = new app.auth.GithubAuthProvider();
 
-            this.auth.signInWithPopup(provider).then(function (result) { 
-                resolve(user)
+            this.auth.signInWithPopup(provider).then(function (result) {  
+                resolve(result.user)
             }).catch(function (error) { 
                 var errorCode = error.code; 
                 reject(errorCode)

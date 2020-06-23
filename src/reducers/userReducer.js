@@ -1,14 +1,17 @@
 
-var initialState = {
-    uid:null,
-    onboard:false,
-    name:'Unknown'
+var initialState = { 
+        uid: null,
+        onboard: false, 
+        theme: 'blaze' 
 }
 export default (state = initialState, action) => {
-  switch (action.type) {
-    case 'UPDATE_USER': 
-      return { ...state, user: action.user };
-    default:
-      return state;
-  }
+    switch (action.type) {
+        case 'UPDATE_USER':
+            let user = action.user
+            user.onboard = state.onboard;
+            user.theme = state.theme;
+            return { ...user };
+        default:
+            return state;
+    }
 };

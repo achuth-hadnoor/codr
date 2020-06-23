@@ -1,7 +1,6 @@
 import React from 'react'
 
-export default ()=>{
-    debugger
+export default ()=>{ 
     return (
     <div>bummer!!</div>
 )}
