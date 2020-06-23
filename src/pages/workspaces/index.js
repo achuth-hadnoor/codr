@@ -1,8 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux' 
 import { Switch, Route } from 'react-router-dom'
- 
-import arrayMove from 'array-move';  
+  
 import  view from './view' 
 import create  from './create'
 import Sidebar from './components/sidebar'
@@ -11,21 +10,7 @@ import Icon from 'react-icons-kit'
 import { chevronLeft,chevronRight } from 'react-icons-kit/feather';
 import { bell } from 'react-icons-kit/feather';
 // list of worspaces and global search on the Top
-class Workspaces extends React.Component { 
-    onSortEnd = ({ oldIndex, newIndex }) => {
-        let { workspaces} = this.props;
-        workspaces = arrayMove(workspaces, oldIndex, newIndex)
-        this.props.dispatch({
-            type:'UPDATE_WORKSPACES',
-            workspaces:workspaces
-        })
-    };
-    shouldCancelStart = (e)=>{
-        // Cancel sorting if the event target is an anchor tag (`a`)
-        if (e.target.tagName.toLowerCase() === 'a') {
-            return true; // Return true to cancel sorting
-        }
-    }
+class Workspaces extends React.Component {  
     render() {
         return (
             <Wrapper>

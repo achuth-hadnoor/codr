@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import fire from './../../api/firebase'
+import  SortableComponent from './components/sortable-component'
+import { arrayMove } from 'react-sortable-hoc'
 export class create extends Component {
     constructor(props) {
         super(props);
@@ -16,21 +18,29 @@ export class create extends Component {
             this.props.history.push('/login')
         })
     }
+    onSortEnd = ({ oldIndex, newIndex }) => {
+        let { workspaces} = this.props;
+        workspaces = arrayMove(workspaces, oldIndex, newIndex)
+        this.props.dispatch({
+            type:'UPDATE_WORKSPACES',
+            workspaces:workspaces
+        })
+    };
+    editWorkspace = ()=>{
+        debugger
+    }
     render() { 
         return (
             <Wrapper>
-                <h4>Workspaces</h4>
-                <button onClick={this.signout}>sign out</button>
-                <WsContainer>
-                    {
-                        this.props.workspaces.map((w, i) => (
-                            <WsItem index={i} key={w + i}>
-                                {w.title}
-                            </WsItem>
-                        ))
-                    }
-                </WsContainer>
+                <h3>Workspaces</h3>
+                <button onClick={this.signout}>sign out</button> 
                 <h1>Create Workspaces</h1>
+                <SortableComponent 
+                    workspaces={this.props.workspaces} 
+                    onSortEnd={this.onSortEnd}  
+                    axis = "xy" 
+                    onClick={this.editWorkspace}
+                    />
             </Wrapper>
         )
     }
@@ -46,10 +56,4 @@ export default connect(mapStateToProps)(create)
 const Wrapper = styled.div`
 
 `
-
-const WsContainer = styled.div`
-
-`
-const WsItem = styled.div`
-
-`
+ 

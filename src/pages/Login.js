@@ -12,10 +12,10 @@ export class Login extends Component {
         this.setState({ islogging: true })
         fire.login(this.props.dispatch, this.props.user).then((u) => {  
             localStorage.setItem('authedUser',u.uid)
-            localStorage.setItem('user',JSON.stringify(u))
+            localStorage.setItem('user',JSON.stringify(u)) 
             u.theme = this.props.user.theme;
             u.onboard = this.props.user.onboard
-            this.props.dispatch({type:'UPDATE_USER',u})
+            this.props.dispatch({type:'UPDATE_USER',user:u})
             this.props.history.push('/')
         })
     }
