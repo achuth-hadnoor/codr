@@ -5,34 +5,23 @@ import { Router, Switch, Route } from "react-router-dom";
 
 import AuthedRoute from "./AuthedRoute";
 import UnauthedRoute from "./UnauthedRoute"; 
-
-import { getAllData } from "./api"; 
-
-import onboard from './pages/onboard'
 import Login from './pages/Login'
-import Home from './pages'
-import workspaces from "./pages/workspaces"; 
 import NotFound from './pages/404'
-import settings  from "./pages/settings";
-class AppRouter extends Component { 
-  componentDidMount() {
-    getAllData(this.props.dispatch); 
-  } 
+import Home from './pages'
+import workspaces from './pages/workspaces'
+class AppRouter extends Component {
+ 
   render() {
     return ( 
         <Router history={this.props.history}>
           <Switch>
-            <AuthedRoute component={Home} exact  path = "/" />     
-            <UnauthedRoute component={onboard} exact path="/onboarding" />
-            <UnauthedRoute component={Login} exact path="/login" /> 
-            <AuthedRoute component={settings} exact path="/settings" />   
-             
-            <AuthedRoute component={workspaces}  path="/w/:wid" />          
-            <AuthedRoute component={workspaces} exact path="/w" />     
-            
+            <AuthedRoute component={Home} exact path="/" />
+            <AuthedRoute component={workspaces} path={["/w","/w/:wid"]} /> 
+            <UnauthedRoute component={Login} exact path="/login" />  
             <Route component={NotFound} />
           </Switch>
-        </Router> 
+        </Router>
+       
     );
   }
 }

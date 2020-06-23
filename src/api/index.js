@@ -10,3 +10,5 @@ export const getAllData = (dispatch)=>{
     
 
 }
+export const getUser = ()=>{}
+export const updateUser = ()=>{}

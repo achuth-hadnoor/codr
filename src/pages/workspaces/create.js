@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
+import fire from './../../api/firebase'
 export class create extends Component {
     constructor(props) {
         super(props);
@@ -10,10 +11,16 @@ export class create extends Component {
             },
         }
     }
+    signout = ()=>{
+        fire.signOut().then(()=>{
+            this.props.history.push('/login')
+        })
+    }
     render() { 
         return (
             <Wrapper>
                 <h4>Workspaces</h4>
+                <button onClick={this.signout}>sign out</button>
                 <WsContainer>
                     {
                         this.props.workspaces.map((w, i) => (

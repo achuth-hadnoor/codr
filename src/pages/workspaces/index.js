@@ -7,8 +7,7 @@ import Icon from 'react-icons-kit'
 import arrayMove from 'array-move'; 
 import { grid, settings } from 'react-icons-kit/feather'
 import SortableComponent from './../../components/sortable/sortable-component';
-
-import './../../App.css'
+ 
  
 import  view from './view' 
 import create  from './create'
@@ -62,8 +61,8 @@ width:100%;
 position:absolute;
 left:0;
 top:0;
-background:#121212;
-color:#eee; 
+background:#fff;
+color:#121212; 
 .options{
     padding:10px;
 }
@@ -78,7 +77,7 @@ color:#eee;
         .avatar{
             height:32px;
             width:32px;
-            background:#000;
+            background:#eee;
             border-radius:25px;
             margin:5px 0px;
         }

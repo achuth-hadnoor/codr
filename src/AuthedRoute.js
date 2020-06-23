@@ -27,7 +27,7 @@ class AuthedRoute extends React.Component {
             } else {
               return <div />;
             }
-          } else { 
+          } else {
             return <Component {...props} />;
           }
         }}
