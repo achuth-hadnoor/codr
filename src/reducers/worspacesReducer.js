@@ -17,8 +17,9 @@ var initialState = [{
 }]
 export default (state = initialState, action) => {
   switch (action.type) {
-    case 'UPDATE_WORKSPACE': 
-      return { ...state, workspaces: action.workspaces };
+    case 'UPDATE_WORKSPACES': 
+    state = action.workspaces
+      return state;
     default:
       return state;
   }

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 import fire from './../../api/firebase'
 import  SortableComponent from './components/sortable-component'
-import { arrayMove } from 'react-sortable-hoc'
+import arrayMove from 'array-move'
 export class create extends Component {
     constructor(props) {
         super(props);
@@ -20,10 +20,10 @@ export class create extends Component {
     }
     onSortEnd = ({ oldIndex, newIndex }) => {
         let { workspaces} = this.props;
-        workspaces = arrayMove(workspaces, oldIndex, newIndex)
+        workspaces = arrayMove(workspaces, oldIndex, newIndex) 
         this.props.dispatch({
             type:'UPDATE_WORKSPACES',
-            workspaces:workspaces
+            workspaces 
         })
     };
     editWorkspace = ()=>{
@@ -34,19 +34,20 @@ export class create extends Component {
             <Wrapper>
                 <h3>Workspaces</h3>
                 <button onClick={this.signout}>sign out</button> 
-                <h1>Create Workspaces</h1>
+               
                 <SortableComponent 
                     workspaces={this.props.workspaces} 
                     onSortEnd={this.onSortEnd}  
                     axis = "xy" 
                     onClick={this.editWorkspace}
                     />
+             <h1>Create Workspaces</h1>
             </Wrapper>
         )
     }
 }
 
-const mapStateToProps = (state) => { 
+const mapStateToProps = (state) => {  
     return ({
     workspaces: state.workspaces
 })}
