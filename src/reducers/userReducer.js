@@ -1,8 +1,8 @@
-
 var initialState = { 
-        uid: null,
-        onboard: false, 
-        theme: 'blaze' 
+    autheduser : null,
+    onboard :true,
+    pro:false,
+    theme:'blaze'
 }
 export default (state = initialState, action) => {
     switch (action.type) {

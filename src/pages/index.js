@@ -1,8 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'  
 export class Home extends Component {
-    componentDidMount(){ 
-            this.props.history.push('/w') 
+    componentDidMount(){  
+        this.props.history.push('/w')  
+        if(!this.props.user.onboard){
+            this.props.history.push('/w')
+          } 
+          else{
+              this.props.history.push('/onboarding')
+          }
+          
     }
     render() {
         return (

@@ -30,6 +30,7 @@ ${reset}
         -webkit-font-smoothing: antialiased; 
         position: relative;
         min-height: 100vh;
+        font-family:sans-serif;
     }
     ul{
         margin:0;

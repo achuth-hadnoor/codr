@@ -17,8 +17,8 @@ class Workspaces extends React.Component {
                 <Sidebar user={this.props.user} workspaces={this.props.workspaces} onSortEnd={this.onSortEnd} shouldCancelStart={this.shouldCancelStart}/>      
                    <Container>
                     <div  style={{display:'flex',padding:'0px 10px'}}>
-                        <Icon icon={chevronLeft} style={{padding:10}} onClick={()=>{this.props.history.go(-1)}}/>
-                        <Icon icon={chevronRight} style={{padding:10}} onClick={()=>{this.props.history.go(+1)}}/>
+                        <Icon icon={chevronLeft} style={{padding:10}} onClick={this.props.history.goBack}/>
+                        <Icon icon={chevronRight} style={{padding:10}} onClick={ this.props.history.goForward }/>
                         <div style={{flex:1}}/>
                         <Icon icon={bell} style={{padding:10}}/>
                     </div>

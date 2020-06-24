@@ -5,7 +5,11 @@ export class onboard extends Component {
     render() {
         return (
             <div>
-                onboard
+                <h1>How would you like to use Snipcode</h1>
+                <div>
+                    <span style={{padding:10,margin:5}}>personal</span>
+                    <span style={{padding:10,margin:5}}>work</span>
+                </div>
             </div>
         )
     }

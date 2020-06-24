@@ -21,13 +21,13 @@ export class Login extends Component {
     }
     render() { 
         return (
-            <Wrapper>
-                Login
+            <Wrapper> 
+                <h1 style={{fontSize:24,padding:10}}>Login</h1>
                 {
                 this.state.islogging ?
                 <div>logging....</div>
                 :
-                <GITHUBLOGIN onClick={this.login}><Icon icon={github} /> Sign in with GitHub</GITHUBLOGIN>
+                <GITHUBLOGIN onClick={this.login}><Icon icon={github} /> Continue with GitHub</GITHUBLOGIN>
                 }
             </Wrapper>
         )
@@ -42,7 +42,10 @@ export default connect(mapStateToProps)(Login)
 
 const Wrapper = styled.div`
     display:flex;
-    flex-direction:row;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    height:100%;
 `
 
 const GITHUBLOGIN = styled.button`
@@ -51,4 +54,5 @@ const GITHUBLOGIN = styled.button`
     color:${props=>props.theme.background};
     border:none;
     border-radius:5px;
+    font-weight:400;
 `
