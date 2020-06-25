@@ -4,8 +4,7 @@ import { Switch, Route } from 'react-router-dom'
 import create from './create'
 import view from './view'
 export class Snippets extends Component {
-    componentDidMount(){
-        debugger;
+    componentDidMount(){ 
     }
     render() {
         return (

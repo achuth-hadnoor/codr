@@ -6,8 +6,7 @@ import snippets from './../snippets'
 // show list of snippets 
 
 export class view extends Component {  
-      componentDidMount(){
-        debugger;
+      componentDidMount(){ 
     }
     render() {
         return (

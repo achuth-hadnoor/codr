@@ -10,13 +10,11 @@ export class Login extends Component {
     }
     login = () => {
         this.setState({ islogging: true })
-        fire.login(this.props.dispatch, this.props.user).then((u) => {  
-            localStorage.setItem('authedUser',u.uid)
-            localStorage.setItem('user',JSON.stringify(u)) 
-            u.theme = this.props.user.theme;
-            u.onboard = this.props.user.onboard
+        fire.login().then((u) => {  
             this.props.dispatch({type:'UPDATE_USER',user:u})
-            this.props.history.push('/')
+            this.props.history.push('/onboarding')
+        }).catch(()=>{
+            this.setState({islogging:false})
         })
     }
     render() { 
@@ -46,13 +44,15 @@ const Wrapper = styled.div`
     justify-content:center;
     align-items:center;
     height:100%;
+    background:#efefef;
 `
 
 const GITHUBLOGIN = styled.button`
     padding: 10px 15px;
-    background:${props=>props.theme.color};
-    color:${props=>props.theme.background};
+    background:#121212;
+    color:#fff;
     border:none;
     border-radius:5px;
     font-weight:400;
+    cursor:pointer;
 `

@@ -3,8 +3,7 @@ import { Redirect, Route, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import React from "react";
 import { connect } from "react-redux";
-
-const Loader = () => <div>loader</div>;
+import Loader from './components/loader' 
 
 class AuthedRoute extends React.Component {
   render() {
@@ -14,14 +13,14 @@ class AuthedRoute extends React.Component {
     return (
       <Route
         {...rest}
-        render={props => {
+        render={props => { 
           if (!localStorage["authedUser"]) {
             if (this.props.redirect) {
               return <Redirect to="/login" />;
             } else {
               return <div />;
             }
-          } else if (!this.props.user) {
+          } else if (!this.props.user.uid) { 
             if (this.props.showLoader) {
               return <Loader />;
             } else {

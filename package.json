@@ -27,8 +27,8 @@
     "uid-promise": "1.1.0"
   },
   "devDependencies": {
-    "typescript": "3.3.3",
-    "http-server": "^0.12.3"
+    "http-server": "^0.12.3",
+    "typescript": "3.3.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -42,5 +42,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ] 
+  ]
 }

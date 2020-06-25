@@ -26,8 +26,7 @@ export class create extends Component {
             workspaces
         })
     };
-    editWorkspace = () => {
-        debugger
+    editWorkspace = () => { 
     }
     render() {
         return (
