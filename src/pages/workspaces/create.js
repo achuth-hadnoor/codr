@@ -51,7 +51,7 @@ export class create extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) => { 
     return ({
         workspaces: state.workspaces
     })

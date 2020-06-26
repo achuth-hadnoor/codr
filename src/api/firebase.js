@@ -27,7 +27,7 @@ class Firebase {
                             return resolve(u)
                         })
                     }
-                    this.createuser(user.uid).then(u => {
+                    this.createuser(user.uid,result).then(u => {
                         localStorage.setItem('authedUser', u.uid)                        
                         return resolve(u);
                     })
@@ -38,12 +38,12 @@ class Firebase {
             });
         });
     }
-    createuser(uid) {
-        return new Promise((resolve, reject) => {
+    createuser(uid,result ) {
+        return new Promise((resolve, reject) => { 
             const user = this.auth.currentUser
             this.user = {
                 uid: user.uid,
-                name: user.displayName,
+                name: user.displayName || 'untitled',
                 email: user.email,
                 verified: user.emailVerified,
                 photoURL: user.photoURL,
@@ -51,12 +51,12 @@ class Firebase {
                 lastLogin: user.metadata.lastSignInTime,
                 onboard: true,
                 theme: 'blaze',
-                accessToken: '',
+                accessToken: result.credential.accessToken,
                 lastPath: '/',
                 workspaces: [
                     {
                         id: uid,
-                        title: user.email + '-workspace',
+                        title: user.displayName || 'untitled' + '-workspace',
                         members: [{ uid: user.uid, access: 'OWNER' }],
                         private: true
                     }
@@ -68,7 +68,7 @@ class Firebase {
                 createdOn: user.metadata.creationTime,
                 lastUpdatedOn: user.metadata.creationTime,
                 members: [{
-                    id: user.email + '-workspace',
+                    id: user.displayName + '-workspace',
                     role: 'OWNER',
                     private: true
                 }]
@@ -95,6 +95,13 @@ class Firebase {
     signOut() {
         localStorage.clear();
         return this.auth.signOut();
+    }
+
+    getWorkspaces(){
+        return new Promise((resolve,reject)=>{
+            console.log(this.user)
+            debugger;
+        })
     }
 
 }

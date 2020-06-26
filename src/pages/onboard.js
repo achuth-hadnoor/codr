@@ -9,7 +9,7 @@ export class onboard extends Component {
     }
     done = ()=>{ 
          let {user} = this.props
-            user.onboard = false; 
+            user.onboard = false;  
          updateUser(this.props.dispatch,user)
     }
     render() {
