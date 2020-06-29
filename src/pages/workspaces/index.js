@@ -34,7 +34,7 @@ class Workspaces extends React.Component {
 
 const mapStateToProps = (state) => { 
     return({
-        workspaces:state.workspaces,
+        workspaces:state.user.workspaces,
         user:state.user
     })
 }

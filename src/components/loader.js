@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export default()=>(
     <LoadingWrapper style={{display:'flex',height:'100%',textAlign:'center'}}>
-        <h1>We are getting tings Ready</h1>
+        <h1>We are getting things Ready</h1>
     </LoadingWrapper>
 )
 

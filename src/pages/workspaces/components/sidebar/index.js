@@ -5,7 +5,8 @@ import Icon from 'react-icons-kit'
 import { grid, helpCircle, plus } from 'react-icons-kit/feather'
 import { Link } from 'react-router-dom';
 
-export default ({ workspaces ,user}) => (
+export default ({ workspaces ,user}) => { 
+    return (
     <Wrapper>
         <Link to="/w" className="options" >
             <Icon icon={grid} />
@@ -27,7 +28,7 @@ export default ({ workspaces ,user}) => (
             <Icon icon={helpCircle} />
         </Item> 
     </Wrapper>
-)
+)}
 
 const Wrapper = styled.div`
     display:flex;
