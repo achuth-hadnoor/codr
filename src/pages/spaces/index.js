@@ -9,8 +9,10 @@ export class Spaces extends Component {
             <div>
                 Spaces for fun
                 <Switch>
-                    <Route component={view} path ="/w/:wid/:sid"/> 
-                    <Route component={create} path ="/w/:wid/"/> 
+                        <Route component={viewSnippets} path="/w/:wid/s/s:id/c/:cid" />
+                        <Route component={createSnippets} path="/w/:wid/s/s:id/c" />
+                        <Route component={view} path="/w/:wid/s/s:id/c" />
+                        <Route component={create} path="/w/:wid/s" />
                 </Switch>
             </div>
         )

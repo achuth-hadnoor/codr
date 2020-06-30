@@ -79,6 +79,7 @@ class Firebase {
     getUserInfo(uid) {
         return new Promise(async (resolve, reject) => {
             app.database().ref('users/' + uid).once('value').then(snapshot => {
+                this.user = snapshot.val();
                 return resolve(snapshot.val())
             })
         })
@@ -86,6 +87,7 @@ class Firebase {
     updateUserInfo(user) {
         return new Promise((resolve, reject) => { 
             this.db.ref('/users/' + user.uid).update(user).then(() => {
+                this.user = user
                 resolve(user);
             }).catch(e => {
                 reject(e)
@@ -99,8 +101,8 @@ class Firebase {
 
     getWorkspaces(){
         return new Promise((resolve,reject)=>{
-            console.log(this.user)
             debugger;
+            resolve(this.user.workspaces)
         })
     }
 

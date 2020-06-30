@@ -10,14 +10,18 @@ export const updateUser = (dispatch, user) => {
         dispatch({ type: 'UPDATE_USER', user: u })
     })
 }  
-export const getWorkspaceByID = (dispatch,id)=>{
+export const getWorkspaceByID = (dispatch,id)   =>{
+
+}
+export const getWorkspaces = (dispatch,id)=>{
     fire.getWorkspaces(id).then(w=>{
-        dispatch({type:'UPDATE_WORKSPACE',workspace:w})
+        dispatch({type:'UPDATE_WORKSPACES',workspaces:w})
     })
 }
 export const getAllData = (dispatch) => {
     let userID = localStorage.getItem('authedUser');
     if (userID) {
-        getUser(dispatch, userID);  
+        getUser(dispatch, userID); 
+        getWorkspaces(dispatch) 
     }
 }

@@ -31,7 +31,7 @@ class AppRouter extends Component {
                         <Switch>
                             <AuthedRoute component={Home} exact path="/" />
                             <AuthedRoute component={settings} exact path="/settings" />
-                            <AuthedRoute component={workspaces} path={["/w", "/w/:wid"]} />
+                            <AuthedRoute component={workspaces} path={[ "/w/:wid","/w"]} />
                             <AuthedRoute component={Onboard} exact path="/onboarding" />
                             <UnauthedRoute component={Login} exact path="/login" />
                             <Route component={NotFound} />

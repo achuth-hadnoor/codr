@@ -11,8 +11,8 @@ export class Snippets extends Component {
             <div>
                 Snippets home
                 <Switch>
-                    <Route component={view} path="/:wid/:sid/:cid"/> 
-                    <Route component={create} path="/:wid/:sid/"/>
+                        <Route component={view} path="/w/:wid/s/s:id/c/:cid" />
+                        <Route component={create} path="/w/:wid/s/s:id/c" /> 
                 </Switch>
             </div>
         )
